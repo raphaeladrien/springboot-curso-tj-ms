@@ -10,7 +10,7 @@ COPY ["mvnw", "pom.xml", "$APP_HOME/"]
 
 RUN bash mvnw clean package
 
-FROM openjdk:17-slim as app
+FROM gcr.io/distroless/java17-debian11:nonroot as app
 
 # Env variables
 ENV APP_HOME /app
