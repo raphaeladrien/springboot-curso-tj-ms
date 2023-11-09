@@ -4,24 +4,25 @@ services:
   app:
     build:
       context: .
-      target: app
+      target: build
     expose:
       - "8080"
     ports:
       - "8080:8080"
     networks:
       - tjms-network
-    depends_on:
+    links:
       - db
 
   db:
     image: postgres:11.4
+    env_file: ./dev/db_env_file
     networks:
       - tjms-network
     ports:
-      - "5434:5434"
+      - "5432:5432"
     expose:
-      - "5434"
+      - "5432"
 
 networks:
   tjms-network:
