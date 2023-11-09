@@ -7,6 +7,6 @@ import java.util.List;
 @Service
 public class ProcessoService {
     public List<Processo> obter() {
-        return List.of(new Processo("raphael", 12));
+        return List.of();
     }
 }
