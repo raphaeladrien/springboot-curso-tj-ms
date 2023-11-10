@@ -27,6 +27,10 @@ public class Empresa {
         super();
     }
 
+    public UUID getId() {
+        return id;
+    }
+
     public String getNome() {
         return nome;
     }

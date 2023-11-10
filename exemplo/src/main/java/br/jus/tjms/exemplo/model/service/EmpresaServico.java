@@ -6,6 +6,9 @@ import br.jus.tjms.exemplo.model.entity.Empresa;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+import java.util.UUID;
+
 @Service
 public class EmpresaServico {
 
@@ -22,5 +25,15 @@ public class EmpresaServico {
         }
 
         return empresaRepository.save(empresa);
+    }
+
+    public Empresa obterPorId(UUID id) {
+        Optional<Empresa> empresa = empresaRepository.findById(id);
+
+        if(!empresa.isPresent()) {
+            throw new RuntimeException("Empresa not found");
+        }
+
+        return empresa.get();
     }
 }
