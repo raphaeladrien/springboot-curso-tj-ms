@@ -4,6 +4,7 @@ import br.jus.tjms.exemplo.infra.exception.RegisterAlreadyExists;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
@@ -20,11 +21,11 @@ public class DefaultExceptionHandler {
         );
     }
 
-    @ExceptionHandler(RuntimeException.class)
-    public ResponseEntity capturarRuntimeException(Exception ex) {
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public ResponseEntity<RestError> capturarMethodArgumentNotValidException(MethodArgumentNotValidException ex) {
         logger.error(ex.getMessage(), ex);
-        return ResponseEntity.internalServerError().body(
-            "Por favor, entre em contato com o suporte (67) 9123-2332"
+        return ResponseEntity.badRequest().body(new RestError(
+            "00002", ex.getBindingResult().getFieldError().getDefaultMessage())
         );
     }
 

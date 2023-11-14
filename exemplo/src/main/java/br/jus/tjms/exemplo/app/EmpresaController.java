@@ -2,7 +2,7 @@ package br.jus.tjms.exemplo.app;
 
 import br.jus.tjms.exemplo.model.entity.Empresa;
 import br.jus.tjms.exemplo.model.service.EmpresaServico;
-import jakarta.websocket.server.PathParam;
+import jakarta.validation.Valid;
 import org.springframework.hateoas.RepresentationModel;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
@@ -27,7 +27,9 @@ public class EmpresaController {
     }
 
     @PostMapping
-    public ResponseEntity<EmpresaResponse> cadastrarEmpresa(@RequestBody Empresa empresa) {
+    public ResponseEntity<EmpresaResponse> cadastrarEmpresa(
+        @RequestBody @Valid Empresa empresa
+    ) {
         Empresa retEmpresa = empresaServico.gravar(empresa);
         return ResponseEntity.ok(EmpresaResponse.build(retEmpresa));
     }
