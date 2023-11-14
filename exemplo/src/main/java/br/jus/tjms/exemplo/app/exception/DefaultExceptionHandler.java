@@ -24,8 +24,9 @@ public class DefaultExceptionHandler {
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<RestError> capturarMethodArgumentNotValidException(MethodArgumentNotValidException ex) {
         logger.error(ex.getMessage(), ex);
+        String texto = ex.getBindingResult().getFieldError() == null ? "Texto" : ex.getBindingResult().getFieldError().getDefaultMessage();
         return ResponseEntity.badRequest().body(new RestError(
-            "00002", ex.getBindingResult().getFieldError().getDefaultMessage())
+            "00002", texto)
         );
     }
 
