@@ -2,6 +2,9 @@ package br.jus.tjms.exemplo.app;
 
 import br.jus.tjms.exemplo.model.entity.Empresa;
 import br.jus.tjms.exemplo.model.service.EmpresaServico;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import jakarta.validation.Valid;
 import org.springframework.hateoas.RepresentationModel;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
@@ -34,6 +37,10 @@ public class EmpresaController {
         return ResponseEntity.ok(EmpresaResponse.build(retEmpresa));
     }
 
+    @Operation(
+        summary = "API utilizada para obter a empresa pelo ID",
+        description = "Uma super descricao para o meu querido cliente"
+    )
     @GetMapping("/{id}")
     public ResponseEntity<EmpresaResponse> obterPorId(@PathVariable("id") UUID id) {
         return ResponseEntity.ok(EmpresaResponse.build(empresaServico.obterPorId(id)));
