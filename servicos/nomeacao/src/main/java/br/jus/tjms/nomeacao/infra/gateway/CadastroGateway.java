@@ -7,6 +7,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @FeignClient(name = "CADASTRO-SERVICE")
 public interface CadastroGateway {
-    @GetMapping
-    ServidorDTO obterPorMatricula();
+    @GetMapping("/servidor")
+    ServidorDTO obterPorMatricula(@RequestParam Integer matricula);
 }
