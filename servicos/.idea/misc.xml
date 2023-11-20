@@ -6,7 +6,17 @@
       <list>
         <option value="$PROJECT_DIR$/alvara/pom.xml" />
         <option value="$PROJECT_DIR$/funcionario/pom.xml" />
+        <option value="$PROJECT_DIR$/service-registry/pom.xml" />
+        <option value="$PROJECT_DIR$/nomeacao/pom.xml" />
+        <option value="$PROJECT_DIR$/gateway/pom.xml" />
+        <option value="$PROJECT_DIR$/cadastro/pom.xml" />
       </list>
+    </option>
+    <option name="ignoredFiles">
+      <set>
+        <option value="$PROJECT_DIR$/alvara/pom.xml" />
+        <option value="$PROJECT_DIR$/funcionario/pom.xml" />
+      </set>
     </option>
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_17" default="true" project-jdk-name="17" project-jdk-type="JavaSDK">

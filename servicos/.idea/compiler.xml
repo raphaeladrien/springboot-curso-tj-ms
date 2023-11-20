@@ -6,15 +6,25 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="alvara" />
-        <module name="funcionario" />
+        <module name="nomeacao" />
+        <module name="cadastro" />
+        <module name="service-registry" />
+        <module name="gateway" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="alvara" target="17" />
+      <module name="funcionario" target="17" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="alvara" options="-parameters" />
+      <module name="cadastro" options="-parameters" />
       <module name="funcionario" options="-parameters" />
+      <module name="gateway" options="-parameters" />
+      <module name="nomeacao" options="-parameters" />
+      <module name="service-registry" options="-parameters" />
     </option>
   </component>
 </project>
