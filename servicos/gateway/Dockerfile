@@ -15,6 +15,6 @@ FROM gcr.io/distroless/java17-debian11:nonroot AS service-registry
 ENV APP_HOME /app
 WORKDIR /app
 
-COPY --from=build /app/target/service-registry-0.0.1-SNAPSHOT.jar .
+COPY --from=build /app/target/gateway-0.0.1-SNAPSHOT.jar .
 
-CMD ["service-registry-0.0.1-SNAPSHOT.jar"]
+CMD ["gateway-0.0.1-SNAPSHOT.jar"]
