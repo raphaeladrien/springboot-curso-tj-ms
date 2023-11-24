@@ -1,5 +1,6 @@
 package br.jus.tjms.cadastro.app;
 
+import br.jus.tjms.cadastro.infra.gateway.pub.CadastroMessagePub;
 import br.jus.tjms.cadastro.model.dto.ServidorDTO;
 import jakarta.websocket.server.PathParam;
 import org.springframework.http.ResponseEntity;
@@ -14,6 +15,18 @@ import java.util.UUID;
 @RestController
 @RequestMapping("servidor")
 public class ServidorController {
+
+    private CadastroMessagePub cadastroMessagePub;
+    public ServidorController(CadastroMessagePub cadastroMessagePub) {
+        this.cadastroMessagePub = cadastroMessagePub;
+    }
+
+    @GetMapping("/enviar")
+    public ResponseEntity<String> enviar() {
+        cadastroMessagePub.enviarMensagem();
+
+        return ResponseEntity.ok("enviado");
+    }
 
     @GetMapping
     public ResponseEntity<ServidorDTO> obterPorMatricula(
