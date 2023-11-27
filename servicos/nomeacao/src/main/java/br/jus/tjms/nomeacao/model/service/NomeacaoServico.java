@@ -28,7 +28,7 @@ public class NomeacaoServico {
         );
 
         final ServidorDTO servidorDTO = cadastroGateway.obterPorMatricula(matricula);
-        nomeacaoModel.setExternalUUID(servidorDTO.id());
+        nomeacaoModel.setExternalUUID(servidorDTO.getId());
 
         return nomeacaoRepository.save(nomeacaoModel);
     }

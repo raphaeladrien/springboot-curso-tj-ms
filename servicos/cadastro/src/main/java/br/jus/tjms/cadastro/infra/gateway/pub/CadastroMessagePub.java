@@ -1,7 +1,11 @@
 package br.jus.tjms.cadastro.infra.gateway.pub;
 
+import br.jus.tjms.cadastro.model.dto.ServidorDTO;
+import br.jus.tjms.cadastro.model.entity.Servidor;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Component;
+
+import java.util.UUID;
 
 @Component
 public class CadastroMessagePub {
@@ -13,6 +17,14 @@ public class CadastroMessagePub {
     }
 
     public void enviarMensagem() {
-        kafkaTemplate.send("tjms-cadastro", "cadastrado");
+        final ServidorDTO servidorDTO = new ServidorDTO(UUID.randomUUID(),
+            "raphael",
+            1234);
+
+        kafkaTemplate.send(
+            "tjms-cadastro",
+            UUID.randomUUID().toString(),
+            servidorDTO
+        );
     }
 }

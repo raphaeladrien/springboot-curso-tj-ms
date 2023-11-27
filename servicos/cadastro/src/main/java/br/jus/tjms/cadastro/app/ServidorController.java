@@ -41,7 +41,7 @@ public class ServidorController {
 
         final ServidorDTO servidor = servidores
             .stream()
-            .filter(it -> it.matricula() == matricula)
+            .filter(it -> it.getMatricula() == matricula)
             .findFirst()
             .get();
 
