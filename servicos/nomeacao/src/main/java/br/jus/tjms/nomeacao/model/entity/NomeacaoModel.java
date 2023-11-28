@@ -1,6 +1,8 @@
 package br.jus.tjms.nomeacao.model.entity;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 
@@ -14,6 +16,10 @@ public class NomeacaoModel {
     private String provimento;
     private Integer classificacao;
     private Integer matricula;
+    private String nome;
+
+    @Enumerated(EnumType.STRING)
+    private NomeacaoStatus nomeacaoStatus;
 
     private UUID externalUUID;
 
@@ -21,11 +27,20 @@ public class NomeacaoModel {
         super();
     }
 
-    public NomeacaoModel(String cargo, String provimento, Integer classificacao, Integer matricula) {
+    public NomeacaoModel(
+        String cargo,
+        String provimento,
+        Integer classificacao,
+        Integer matricula,
+        NomeacaoStatus nomeacaoStatus,
+        String nome
+    ) {
         this.cargo = cargo;
         this.provimento = provimento;
         this.classificacao = classificacao;
         this.matricula = matricula;
+        this.nomeacaoStatus = nomeacaoStatus;
+        this.nome = nome;
     }
 
     public UUID getId() {
@@ -74,5 +89,20 @@ public class NomeacaoModel {
 
     public void setExternalUUID(UUID externalUUID) {
         this.externalUUID = externalUUID;
+    }
+
+    public NomeacaoStatus getNomeacaoStatus() {
+        return nomeacaoStatus;
+    }
+    public void setNomeacaoStatus(NomeacaoStatus nomeacaoStatus) {
+        this.nomeacaoStatus = nomeacaoStatus;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 }

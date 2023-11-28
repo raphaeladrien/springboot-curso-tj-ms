@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 
 public record NomeacaoParam(
     String cargo,
+    String nome,
     String provimento,
     Integer classificacao,
     Integer matricula) {
